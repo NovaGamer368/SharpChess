@@ -47,51 +47,13 @@ namespace SharpChess.Model
         /// Testing
         public static string GameStartPosition
         {
-            // POSITION #000 bbqnnrkr   BBQNNRKR
-            // DEFAULT  rnbqkbnr    RNBQKBNR
-            // DEFAULT "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
             get
             {
-                return GenerateChess960FEN();
+                return "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
             }
         }
 
         static Random random = new Random();
-
-        static string GenerateChess960FEN()
-        {
-            char[] pieces = { 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' };
-
-            // Shuffle the pieces randomly
-            for (int i = 0; i < pieces.Length - 1; i++)
-            {
-                int j = random.Next(i, pieces.Length);
-                char temp = pieces[i];
-                pieces[i] = pieces[j];
-                pieces[j] = temp;
-            }
-
-            // Ensure bishops are on different color squares
-            while (pieces[1] == 'B' && pieces[2] == 'B')
-            {
-                int j = random.Next(1, pieces.Length);
-                if (pieces[j] != 'B')
-                {
-                    char temp = pieces[1];
-                    pieces[1] = pieces[j];
-                    pieces[j] = temp;
-                    break;
-                }
-            }
-
-            // Construct the FEN string for the Chess960 position
-            string fen = new string(Array.ConvertAll(pieces, char.ToLower)) + "/pppppppp/8/8/8/8/PPPPPPPP/" + new string(pieces);
-            fen += " w - - 0 1";
-            Console.WriteLine(fen);
-
-            return fen;
-        }
-
         #endregion
 
         #region Public Methods
@@ -147,6 +109,46 @@ namespace SharpChess.Model
         ///     </item>
         /// </list>
         /// </example>
+        /// 
+        //---------------------------------------------------------------------------------------------------------------------------
+        // CHAT GPT GENERATED THIS
+        // Chat link https://chat.openai.com/share/4762e433-6503-4736-86ac-54bf784f8533
+        public static string GenerateChess960FEN()
+        {
+            Random random = new Random();
+            char[] pieces = { 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' };
+
+            // Shuffle the pieces
+            for (int i = 0; i < pieces.Length - 1; i++)
+            {
+                int j = random.Next(i, pieces.Length);
+                char temp = pieces[i];
+                pieces[i] = pieces[j];
+                pieces[j] = temp;
+            }
+
+            // Ensure bishops are on different color squares
+            while (pieces[1] == 'B' && pieces[2] == 'B')
+            {
+                int j = random.Next(1, pieces.Length);
+                if (pieces[j] != 'B')
+                {
+                    char temp = pieces[1];
+                    pieces[1] = pieces[j];
+                    pieces[j] = temp;
+                    break;
+                }
+            }
+
+            // Construct the FEN string for the Chess960 position
+            string fen = new string(Array.ConvertAll(pieces, char.ToLower)) + "/pppppppp/8/8/8/8/PPPPPPPP/" + new string(pieces);
+            fen += " w - - 0 1";
+            Console.WriteLine(fen);
+
+            return fen;
+        } // CHAT GPT GENERATED THIS
+        //---------------------------------------------------------------------------------------------------------------------------
+
         public static string GetBoardPosition()
         {
             Game.SuspendPondering();

@@ -66,6 +66,7 @@ namespace SharpChess.Model
             ClockIncrementPerMove = new TimeSpan(0, 0, 0);
             ClockFixedTimePerMove = new TimeSpan(0, 0, 0);
             DifficultyLevel = 1;
+            Chess960 = false;
             ClockTime = new TimeSpan(0, 5, 0);
             ClockMaxMoves = 40;
             UseRandomOpeningMoves = true;
@@ -259,6 +260,7 @@ namespace SharpChess.Model
         ///   Gets or sets game Difficulty Level.
         /// </summary>
         public static int DifficultyLevel { get; set; }
+        public static bool Chess960 { get; set; }
 
         /// <summary>
         ///   Gets a value indicating whether Edit Mode is Active.
@@ -557,12 +559,21 @@ namespace SharpChess.Model
         public static void New(string fenString)
         {
             SuspendPondering();
-
-            NewInternal(fenString);
+            Console.WriteLine("Chess 960 variable is: " + Chess960);
+            if(Chess960)
+            {
+                NewInternal(Fen.GenerateChess960FEN());
+            }
+            else
+            {
+                NewInternal(fenString);
+            }
             SaveBackup();
             SendBoardPositionChangeEvent();
             ResumePondering();
         }
+
+    
 
         /// <summary>
         ///   Pause the game.

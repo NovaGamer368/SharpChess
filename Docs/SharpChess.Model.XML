@@ -1506,7 +1506,7 @@
             </summary>
             Testing
         </member>
-        <member name="M:SharpChess.Model.Fen.GetBoardPosition">
+        <member name="M:SharpChess.Model.Fen.GenerateChess960FEN">
             <summary>
             Extraction the current position in FEN: Forsyth-Edwards Notation
             </summary>
@@ -1558,6 +1558,7 @@
                 </item>
             </list>
             </example>
+            
         </member>
         <member name="M:SharpChess.Model.Fen.SetBoardPosition(System.String)">
             <summary>
