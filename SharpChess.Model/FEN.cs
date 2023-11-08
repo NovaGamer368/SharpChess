@@ -44,6 +44,7 @@ namespace SharpChess.Model
         /// <summary>
         ///   Gets GameStartPosition.
         /// </summary>
+        /// Testing
         public static string GameStartPosition
         {
             get
