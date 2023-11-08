@@ -47,9 +47,10 @@ namespace SharpChess.Model
         /// Testing
         public static string GameStartPosition
         {
+            //bbqnnrkr   BBQNNRKR
             get
             {
-                return "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+                return "bbqnnrkr/pppppppp/8/8/8/8/PPPPPPPP/BBQNNRKR w KQkq - 0 1";
             }
         }
 

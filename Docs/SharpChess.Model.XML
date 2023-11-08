@@ -1504,6 +1504,7 @@
             <summary>
               Gets GameStartPosition.
             </summary>
+            Testing
         </member>
         <member name="M:SharpChess.Model.Fen.GetBoardPosition">
             <summary>
