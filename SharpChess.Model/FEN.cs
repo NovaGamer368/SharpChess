@@ -49,10 +49,47 @@ namespace SharpChess.Model
         {
             // POSITION #000 bbqnnrkr   BBQNNRKR
             // DEFAULT  rnbqkbnr    RNBQKBNR
+            // DEFAULT "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
             get
             {
-                return "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+                return GenerateChess960FEN();
             }
+        }
+
+        static Random random = new Random();
+
+        static string GenerateChess960FEN()
+        {
+            char[] pieces = { 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R' };
+
+            // Shuffle the pieces randomly
+            for (int i = 0; i < pieces.Length - 1; i++)
+            {
+                int j = random.Next(i, pieces.Length);
+                char temp = pieces[i];
+                pieces[i] = pieces[j];
+                pieces[j] = temp;
+            }
+
+            // Ensure bishops are on different color squares
+            while (pieces[1] == 'B' && pieces[2] == 'B')
+            {
+                int j = random.Next(1, pieces.Length);
+                if (pieces[j] != 'B')
+                {
+                    char temp = pieces[1];
+                    pieces[1] = pieces[j];
+                    pieces[j] = temp;
+                    break;
+                }
+            }
+
+            // Construct the FEN string for the Chess960 position
+            string fen = new string(Array.ConvertAll(pieces, char.ToLower)) + "/pppppppp/8/8/8/8/PPPPPPPP/" + new string(pieces);
+            fen += " w - - 0 1";
+            Console.WriteLine(fen);
+
+            return fen;
         }
 
         #endregion
