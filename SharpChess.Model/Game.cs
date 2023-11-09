@@ -62,6 +62,7 @@ namespace SharpChess.Model
         /// </summary>
         static Game()
         {
+            BackupGamePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BackupGame.sharpchess");
             EnableFeatures();
             ClockIncrementPerMove = new TimeSpan(0, 0, 0);
             ClockFixedTimePerMove = new TimeSpan(0, 0, 0);
@@ -569,6 +570,7 @@ namespace SharpChess.Model
                 NewInternal(fenString);
             }
             SaveBackup();
+            Console.WriteLine(BoardPositionChanged);
             SendBoardPositionChangeEvent();
             ResumePondering();
         }

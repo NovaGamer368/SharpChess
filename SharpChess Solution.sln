@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpChess", "SharpChess Game\SharpChess.csproj", "{F5FD2F27-6DCB-453C-B018-0AC8D4BC4109}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpChess.Model", "SharpChess.Model\SharpChess.Model.csproj", "{EE301A37-33A9-4B7A-BE08-D001057610CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpChess.Model.Tests", "SharpChess.Model.Tests\SharpChess.Model.Tests.csproj", "{7A6D5A21-2856-48C1-B602-B2F575C202F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess960Tests", "Chess960Tests\Chess960Tests.csproj", "{B5049AE5-6067-4767-81B9-2873E4ADFA84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,9 +70,24 @@ Global
 		{7A6D5A21-2856-48C1-B602-B2F575C202F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7A6D5A21-2856-48C1-B602-B2F575C202F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7A6D5A21-2856-48C1-B602-B2F575C202F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5049AE5-6067-4767-81B9-2873E4ADFA84}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE155BC9-1948-4A8B-AC4D-B13AAA0B7588}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SharpChess Solution.vsmdi

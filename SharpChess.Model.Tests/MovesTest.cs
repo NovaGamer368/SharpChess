@@ -79,31 +79,30 @@ namespace SharpChess.Model.Tests
         [TestMethod]
         public void SortByScoreTest()
         {
-            /*
-            Moves moves = new Moves();
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 1));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 4));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 6));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 2));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 8));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 5));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 6));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 7));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 8));
-            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
 
-            moves.SortByScore();
+            //Moves moves = new Moves();
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 1));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 4));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 6));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 2));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 8));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 5));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 6));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 7));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 8));
+            //moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
 
-            for (int i = 0; i < moves.Count - 1; i++)
-            {
-                Assert.IsTrue(moves[i].Score >= moves[i + 1].Score);
-            }
-             * */
+            //moves.SortByScore();
+
+            //for (int i = 0; i < moves.Count - 1; i++)
+            //{
+            //    Assert.IsTrue(moves[i].Score >= moves[i + 1].Score);
+            //}
         }
 
         #endregion

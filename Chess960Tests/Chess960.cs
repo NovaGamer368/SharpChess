@@ -1,79 +1,63 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="PlayerTest.cs" company="SharpChess.com">
-//   SharpChess.com
-// </copyright>
-// <summary>
-//   This is a test class for PlayerTest and is intended
-//   to contain all PlayerTest Unit Tests
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
+using SharpChess.Model;
+using SharpChess.Model.AI;
+using System.Diagnostics;
 
-#region License
-
-// SharpChess
-// Copyright (C) 2012 SharpChess.com
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#endregion
-
-namespace SharpChess.Model.Tests
+namespace Chess960Tests
 {
-    #region Using
-
-
-    #endregion
-
-    /// <summary>
-    /// This is a test class for PlayerTest and is intended
-    ///  to contain all PlayerTest Unit Tests
-    /// </summary>
     [TestClass]
-    public class PlayerTest
+    public class Chess960
     {
-        #region Public Properties
+        [TestMethod]
+        public void ChessFENStringTest()
+        {
+            string fenString = Fen.GenerateChess960FEN();
+            Console.WriteLine(fenString);
+            Fen.SetBoardPosition(fenString);
+            Console.WriteLine("Board: " + Fen.GetBoardPosition());
+            Assert.AreNotEqual(fenString, "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        }
 
-        /// <summary>
-        ///  Gets or sets the test context which provides
-        ///  information about and functionality for the current test run.
-        /// </summary>
-        public TestContext TestContext { get; set; }
+        [TestMethod]
+        public void ChessFENBoardValidiation()
+        {
+            string fenString = Fen.GenerateChess960FEN();
+            Console.WriteLine(fenString);
+            Fen.SetBoardPosition(fenString);
+            Console.WriteLine("Board Changed: " + Fen.GetBoardPosition());
+            Assert.IsTrue(fenString == Fen.GetBoardPosition());
+        }
 
-        #endregion
 
-        // You can use the following additional attributes as you write your tests:
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext)
-        // {
-        // }
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup()
-        // {
-        // }
-        // Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup()
-        // {
-        // }
-        #region Public Methods
+        //---------------------------------------------------------------------------- Moves Tests ----------------------------------------------------------
+        [TestMethod]
+        public void SortByScoreTest()
+        {
 
-        /// <summary>
-        /// A test for RecordPossibleKillerMove
-        /// </summary>
+            Moves moves = new Moves();
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 1));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 4));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 6));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 2));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 3));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 8));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 5));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 6));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 7));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 8));
+            moves.Add(new Move(0, 0, Move.MoveNames.NullMove, null, null, null, null, 0, 0));
+
+            moves.SortByScore();
+
+            for (int i = 0; i < moves.Count - 1; i++)
+            {
+                Assert.IsTrue(moves[i].Score >= moves[i + 1].Score);
+            }
+        }
+        //---------------------------------------------------------------------------- Player Tests ----------------------------------------------------------
         [TestMethod]
         public void RecordPossibleKillerMoveTest()
         {
@@ -119,10 +103,6 @@ namespace SharpChess.Model.Tests
             Assert.IsTrue(KillerMoves.RetrieveB(Ply) == move5);
         }
 
-        /// <summary>
-        /// A test to ensure that if a move that is already a killer move gets a higher score, 
-        /// that it updates rather than inserts into killer mover slots.
-        /// </summary>
         [TestMethod]
         public void SameKillerMoveWithHigherScoreReplacesSlotEntry()
         {
@@ -174,7 +154,5 @@ namespace SharpChess.Model.Tests
             Assert.IsTrue(Move.MovesMatch(KillerMoves.RetrieveB(Ply), move3));
             Assert.IsTrue(KillerMoves.RetrieveB(Ply).Score == 30);
         }
-
-        #endregion
     }
 }
